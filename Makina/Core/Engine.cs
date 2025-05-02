@@ -5,24 +5,26 @@ using Makina.Logging;       // Add using for Logger
 using Makina.Rendering;     // Add using for Renderer
 using Makina.SceneManagement; // Add using for SceneManager
 using Makina.Input; // Add Input using
+using Makina.Assets; // Add Assets using
 // using Makina.Input; // Example for future input system
 
 namespace Makina.Core
 {
-    public class Engine
+    // Add IDisposable if Engine owns disposable resources like AssetManager
+    public class Engine : IDisposable
     {
         private readonly SceneManager _sceneManager;
         private readonly Renderer _renderer;
-        private readonly ContentManager _content; // Store ContentManager
-        private readonly InputManager _inputManager; // Add InputManager instance
-        // private readonly InputManager _inputManager; // Example
+        private readonly InputManager _inputManager;
+        private readonly AssetManager _assetManager; // Add AssetManager instance
+        private bool _isDisposed = false;
 
-        // TODO: Initialize other engine systems (input, etc.)
+        // TODO: Initialize other engine systems (audio? physics?)
 
         // Accept ContentManager in constructor
         public Engine(GraphicsDevice graphicsDevice, ContentManager content)
         {
-            _content = content;
+            _assetManager = new AssetManager(content); // Instantiate AssetManager
             _renderer = new Renderer(graphicsDevice);
             _sceneManager = new SceneManager();
             _inputManager = new InputManager(); // Instantiate InputManager
@@ -37,7 +39,8 @@ namespace Makina.Core
         {
             Logger.Info("Engine Initializing...");
             _inputManager.Initialize(); // Initialize InputManager
-            _sceneManager.Initialize(_content, _renderer);
+            // Initialize SceneManager with needed references (now including AssetManager)
+            _sceneManager.Initialize(_assetManager, _renderer);
             // Initialize other systems (Input, etc.)
             // _inputManager.Initialize();
             Logger.Info("Engine Initialized.");
@@ -47,7 +50,7 @@ namespace Makina.Core
         {
             Logger.Info("Engine Loading Content...");
             _renderer.LoadContent();
-            // Scene content is now loaded via SceneManager.LoadScene -> Scene.LoadContent
+            // Core engine assets could be loaded via _assetManager here if needed
             Logger.Info("Engine Content Loaded.");
             // Load Initial Scene *after* core content (renderer) is loaded and SceneManager is initialized.
             // This needs a default scene implementation.
@@ -63,6 +66,7 @@ namespace Makina.Core
 
         public void Update(GameTime gameTime)
         {
+            if (_isDisposed) return;
             // Update core systems first
             _inputManager.Update(gameTime); // Update InputManager state
 
@@ -72,9 +76,32 @@ namespace Makina.Core
 
         public void Draw(GameTime gameTime)
         {
+            if (_isDisposed) return;
             _renderer.BeginDraw(); // Handled by Renderer
             _sceneManager.Draw(gameTime); // Scene draws its ECS systems (like RenderingSystem)
             _renderer.EndDraw(); // Handled by Renderer
+        }
+
+        // Implement IDisposable to dispose owned resources like AssetManager
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_isDisposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed state (managed objects).
+                    _assetManager?.Dispose(); // Dispose the AssetManager
+                    // Dispose other managed resources owned by Engine here
+                }
+                _isDisposed = true;
+                Logger.Info("Engine disposed.");
+            }
         }
     }
 } 
