@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makina", "Makina\Makina.csproj", "{D92705BD-3FCF-47C7-8469-402B2473E9ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{79F15FFB-C5D9-49E2-84FF-64AD16F230B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D92705BD-3FCF-47C7-8469-402B2473E9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D92705BD-3FCF-47C7-8469-402B2473E9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D92705BD-3FCF-47C7-8469-402B2473E9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D92705BD-3FCF-47C7-8469-402B2473E9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F15FFB-C5D9-49E2-84FF-64AD16F230B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F15FFB-C5D9-49E2-84FF-64AD16F230B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F15FFB-C5D9-49E2-84FF-64AD16F230B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F15FFB-C5D9-49E2-84FF-64AD16F230B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

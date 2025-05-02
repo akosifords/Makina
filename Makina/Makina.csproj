@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Makina</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\" />
+      <Folder Include="Components\" />
+      <Folder Include="Core\" />
+      <Folder Include="Debug\" />
+      <Folder Include="ECS\" />
+      <Folder Include="Logging\" />
+      <Folder Include="Rendering\" />
+      <Folder Include="SceneManagement\" />
+    </ItemGroup>
+
+</Project>

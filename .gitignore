@@ -1,0 +1,58 @@
+## C#
+[Bb]in/
+[Oo]bj/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# Rider files
+.idea/
+*.sln.iml
+
+# User-specific files
+*.userprefs
+*.suo
+
+# MonoDevelop specific files
+*.pidb
+*.userprefs
+
+## MonoGame
+# MonoGame content pipeline intermediate files
+*.mgcontent
+*.mgstats
+*.mgtask
+
+# Compiled content files (typically placed in Content/bin)
+Content/[Bb]in/
+Content/[Oo]bj/
+*.xnb
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if you want to prevent NuGet from downloading packages Restore requires packages.config or project.json to exist.
+# !**/packages/repositories.config
+
+# Roslyn files
+*.roslyncodeanalysis.sarif.json 
