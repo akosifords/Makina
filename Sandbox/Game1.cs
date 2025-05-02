@@ -19,7 +19,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        _engine = new Engine(GraphicsDevice);
+        _engine = new Engine(GraphicsDevice, Content);
         base.Initialize();
         _engine.Initialize();
     }
